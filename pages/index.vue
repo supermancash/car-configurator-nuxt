@@ -59,6 +59,7 @@ const handleCheckBoxChange = (e, code, category) => {
           Object.entries(data.value.selectables.vehicleComponents).filter(
               el => el[1].selected === true && category.categoryName === el[1].componentType)[0][0]
       ).checked = true;
+      equipmentRemoved.value.splice(equipmentRemoved.value.indexOf(el => el.componentType === category.categoryName), 1)
     }
     equipmentAdded.value.splice(equipmentAdded.value.findIndex(el => el.id === code.id), 1);
   }

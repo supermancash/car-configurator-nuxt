@@ -86,9 +86,8 @@ const handleProceed = async (e) => {
 <template>
   <div>
     <h1 style="text-align: center">Configuration page</h1>
-    <div style="margin: auto; width: 10vw" }}>
-      <h3
-          key={"test"}>
+    <div style="margin: auto; width: 10vw">
+      <h3>
         Powered by
         <span style="color: transparent">
         Nuxt

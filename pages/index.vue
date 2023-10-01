@@ -86,6 +86,15 @@ const handleProceed = async (e) => {
 <template>
   <div>
     <h1 style="text-align: center">Configuration page</h1>
+    <div style="margin: auto; width: 10vw" }}>
+      <h3
+          key={"test"}>
+        Powered by
+        <span style="color: transparent">
+        Nuxt
+      </span>
+      </h3>
+    </div>
     <img style="width: 90vw; display: block;margin-left: auto;margin-right: auto;"
          src="~/assets/mercedes.jpeg" alt="Picture of a mercedes">
     <h1>{{ data.modelData.name }}</h1>

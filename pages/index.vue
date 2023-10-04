@@ -89,7 +89,7 @@ const handleProceed = async (e) => {
     <div style="margin: auto; width: 10vw">
       <h3>
         Powered by
-        <span style="color: transparent">
+        <span style="color: #41b883">
         Nuxt
       </span>
       </h3>

@@ -1,6 +1,8 @@
 import {initialData} from "~/data/initialConfig.js";
 import {selectableData} from "~/data/selectableConfig.js";
 import {modelInfo} from "~/data/modelInfo.js";
+import * as crypto from "crypto";
+
 
 let data = [];
 export default defineEventHandler(async (e) => {

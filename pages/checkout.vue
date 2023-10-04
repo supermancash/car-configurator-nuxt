@@ -4,6 +4,7 @@ const {data} = await useFetch('/api/configuration?sessionid=' + useCookie('sessi
   method: 'GET',
   headers: {'accept': 'application/json'}
 });
+console.log(data.value.configuration)
 
 
 const formatter = new Intl.NumberFormat('en-US', {
@@ -12,10 +13,9 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 
 const openedState = useState('openedState', () => data.value.selectables.componentCategories.map(() => false));
-console.log(data.value.configuration.eqAdd)
 
 let sum = data.value.modelData.priceInformation.price;
-data.value.configuration.eqAdd.forEach(eq => sum += eq.priceInformation.price);
+if(data.value.configuration.eqAdd)data.value.configuration.eqAdd.forEach(eq => sum += eq.priceInformation.price);
 </script>
 
 

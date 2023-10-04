@@ -4,16 +4,21 @@ import {modelInfo} from "~/data/modelInfo.js";
 import * as crypto from "crypto";
 
 
+
 let data = [];
 export default defineEventHandler(async (e) => {
+    const conf = getCookie(e, 'configuration');
     if (e.method === "POST") {
         const body = await readBody(e);
+
         console.log(body)
-        const index = data.findIndex(el => el.id === body.sessionid);
-        let obj = index > -1 ? data[index] : {};
-        obj.id = body.sessionid;
-        obj.configuration = {eqAdd: body.equipmentAdded, eqRem: body.equipmentRemoved}
-        if (index === -1) data.push(obj);
+        let obj = conf===undefined ?
+            {eqAdd: body.equipmentAdded, eqRem: body.equipmentRemoved}
+            : JSON.parse(conf);
+
+        setCookie(e, 'configuration', JSON.stringify(obj));
+        console.log("====== CONF ========")
+        console.log(JSON.parse(getCookie(e, 'configuration')))
 
         return new Response(JSON.stringify({message: data}), {status: 200})
     }
@@ -24,9 +29,9 @@ export default defineEventHandler(async (e) => {
             initialData: initialData,
             selectables: selectableData,
             modelData: modelInfo,
-            configuration: data[
-                data.findIndex(el => el.id === sessionid)
-                ].configuration
+            configuration: getCookie(e, 'configuration')===undefined ?
+                {} :
+                new Object(JSON.parse(getCookie(e, 'configuration')))
         }
     }
 

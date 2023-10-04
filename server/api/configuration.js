@@ -33,12 +33,11 @@ export default defineEventHandler(async (e) => {
     const uuid = crypto.randomUUID();
     setCookie(e, 'sessionid', uuid);
 
-    return new Response(JSON.stringify(
-        {
-            sessionid: getCookie(e, 'sessionid'),
-            initialData: initialData,
-            selectables: selectableData,
-            modelData: modelInfo,
-        }
-    ), {status: 200});
+    return {
+        sessionid: getCookie(e, 'sessionid'),
+        initialData: initialData,
+        selectables: selectableData,
+        modelData: modelInfo,
+    }
+
 })

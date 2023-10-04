@@ -1,6 +1,7 @@
 <script setup>
 const count = useState('count', () => 0);
 const {data} = await useFetch('/api/configuration', {method: 'GET', headers: {'accept': 'application/json'}});
+console.log(data)
 
 const sessionid = useCookie('sessionid');
 
@@ -86,7 +87,7 @@ const handleProceed = async (e) => {
 <template>
   <div>
     <h1 style="text-align: center">Configuration page</h1>
-    <div style="margin: auto; width: 10vw">
+    <div style="margin: auto; width: 100vw; text-align: center">
       <h3>
         Powered by
         <span style="color: #41b883">
